@@ -60,27 +60,48 @@ void autonomous(void) {
   // ..........................................................................
   
     
-    Drivetrain.setDriveVelocity(50,percent);
+    Drivetrain.setDriveVelocity(60,percent);
     hammerL.setVelocity(15, percent);
     hammerR.setVelocity(15, percent);
     
+    
+    hammerL.spin(reverse, 10, percent);
+    hammerR.spin(forward, 10, percent);
+    wait(1,sec);
+
+    hammerL.stop();
+    hammerR.stop();
+    wait(1, sec);
+
+    hammerL.spin(forward, 10, percent);
+    hammerR.spin(reverse, 10, percent);
+    wait(2,sec);
+
+
+    Drivetrain.drive(reverse);
+    wait(0.2,sec);
+
+    Drivetrain.turn(left);
+    wait(1.90, sec);
+
     Drivetrain.drive(forward);
-    wait(1.5,sec);
+    wait(3.2,sec);
+
+    Drivetrain.turn(right);
+    wait(0.49, sec);
 
     Drivetrain.stop();
-
     hammerL.spin(reverse, 15, percent);
     hammerR.spin(forward, 15, percent);
-    wait(2,sec);
+    wait(1,sec);
 
-
-    
     Drivetrain.drive(reverse);
-    wait(2,sec);
+    wait(4,sec);
 
     Drivetrain.stop();
     hammerL.stop();
     hammerR.stop();
+    wait(3, sec);
 }
 
 /*---------------------------------------------------------------------------*/
