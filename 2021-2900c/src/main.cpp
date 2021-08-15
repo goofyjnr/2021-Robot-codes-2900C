@@ -11,8 +11,7 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Drivetrain           drivetrain    15, 20, 11, 16  
-// hammerR              motor         10
-// hammerL              motor         9
+// goalm              motor         9
 // Controller1          controller                    
               
 // ---- END VEXCODE CONFIGURED DEVICES ----
@@ -61,47 +60,37 @@ void autonomous(void) {
   
     
     Drivetrain.setDriveVelocity(50,percent);
-    hammerL.setVelocity(15, percent);
-    hammerR.setVelocity(15, percent);
+    goalm.setVelocity(70, percent);
     
+    goalm.spin(forward, 70, percent);
+    wait(1, sec);
+
     Drivetrain.drive(forward);
+    goalm.spin(forward, 70, percent);
     wait(1.5,sec);
 
     Drivetrain.stop();
 
-    hammerL.spin(reverse, 10, percent);
-    hammerR.spin(forward, 10, percent);
-    wait(2,sec);
+    goalm.spinTo(35, degrees);
+    wait(0.7,sec);
 
-    hammerL.stop();
-    hammerR.stop();
+    goalm.stop();
+    wait(0.5, sec);
+    
+    
     Drivetrain.drive(reverse);
     wait(2,sec);
 
+    goalm.stop();
     Drivetrain.stop();
-    hammerL.spin(forward, 5, percent);
-    hammerR.spin(reverse, 5, percent);
     wait(2,sec);
 
-    hammerL.stop();
-    hammerR.stop();
     Drivetrain.turn(left);
-    wait(2, seconds);
+    wait(1, sec);
 
-    Drivetrain.stop();
-    wait(0.2, sec);
-
-    Drivetrain.drive(forward);
-    wait(1,sec);
-
-    Drivetrain.turn(right);
-    wait(2, seconds);
-
+    goalm.spin(forward, 70, percent);
     Drivetrain.stop();
     wait(0.5, sec);
-
-
-
 }
 
 /*---------------------------------------------------------------------------*/

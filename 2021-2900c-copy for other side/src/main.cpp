@@ -11,7 +11,6 @@
 // Robot Configuration:
 // [Name]               [Type]        [Port(s)]
 // Drivetrain           drivetrain    15, 20, 11, 16  
-// hammerR              motor         10
 // hammerL              motor         9
 // Controller1          controller                    
               
@@ -61,46 +60,43 @@ void autonomous(void) {
   
     
     Drivetrain.setDriveVelocity(60,percent);
-    hammerL.setVelocity(15, percent);
-    hammerR.setVelocity(15, percent);
+    goalm.setVelocity(15, percent);
     
     
-    hammerL.spin(reverse, 10, percent);
-    hammerR.spin(forward, 10, percent);
-    wait(1,sec);
+    //goalm.spin(reverse, 10, percent);
+    //wait(1,sec);
 
-    hammerL.stop();
-    hammerR.stop();
-    wait(1, sec);
+    //goalm.stop();
+    //wait(1, sec);
 
-    hammerL.spin(forward, 10, percent);
-    hammerR.spin(reverse, 10, percent);
-    wait(2,sec);
+    //Drivetrain.drive(reverse);
+    //wait(0.2, sec);
 
+    //Drivetrain.stop();
+    //goalm.spin(forward, 10, percent);
+    //wait(2,sec);
 
-    Drivetrain.drive(reverse);
-    wait(0.2,sec);
-
-    Drivetrain.turn(left);
-    wait(1.90, sec);
+    //Drivetrain.turn(left);
+    //wait(2, sec);
 
     Drivetrain.drive(forward);
-    wait(3.2,sec);
+    goalm.spin(forward, 40, percent);
+    wait(3.7,sec);
 
-    Drivetrain.turn(right);
-    wait(0.49, sec);
+    //Drivetrain.turn(right);
+    //wait(0.5, sec);
 
     Drivetrain.stop();
-    hammerL.spin(reverse, 15, percent);
-    hammerR.spin(forward, 15, percent);
+    goalm.spin(reverse, 40, percent);
     wait(1,sec);
 
+    //goalm.stop();
+    Drivetrain.setDriveVelocity(50,percent);
     Drivetrain.drive(reverse);
     wait(4,sec);
 
     Drivetrain.stop();
-    hammerL.stop();
-    hammerR.stop();
+    goalm.stop();
     wait(3, sec);
 }
 

@@ -15,8 +15,7 @@ motor rightMotorA = motor(PORT11, ratio18_1, true);
 motor rightMotorB = motor(PORT1, ratio18_1, true);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 295, 40, mm, 1);
-motor hammerR = motor(PORT10,ratio18_1,false);
-motor hammerL = motor(PORT9,ratio18_1,false);
+motor goalm = motor(PORT9,ratio36_1,false);
 controller Controller1 = controller(primary);
 
 
@@ -66,19 +65,24 @@ int rc_auto_loop_function_Controller1() {
       }
       // check the ButtonR1/ButtonR2 status to control Left_4bar
       if (Controller1.ButtonR1.pressing()) {
-        hammerL.spin(directionType::fwd,20,velocityUnits::pct);
-        hammerR.spin(directionType::rev,20,velocityUnits::pct);
+        goalm.spin(directionType::fwd,80,velocityUnits::pct);
         Controller1RightShoulderControlMotorsStopped = false;
       } else if (Controller1.ButtonR2.pressing()) {
-        hammerL.spin(directionType::rev,20,velocityUnits::pct);
-        hammerR.spin(directionType::fwd,20,velocityUnits::pct);
+        goalm.spin(directionType::rev,50,velocityUnits::pct);
         Controller1RightShoulderControlMotorsStopped = false;
       } else if (!Controller1RightShoulderControlMotorsStopped) {
-        hammerL.stop(brakeType::coast);
-        hammerR.stop(brakeType::coast);
+        goalm.stop(brakeType::coast);
         // set the toggle so that we don't constantly tell the motor to stop when the buttons are released
         Controller1RightShoulderControlMotorsStopped = true;
       }
+
+      if(Controller1.ButtonA.pressing()){
+        goalm.spinTo(15, degrees);
+      }
+      else if (Controller1.ButtonB.pressing()) {
+        goalm.spinTo(245, degrees);
+      }
+      
     }
     // wait before repeating the process
     wait(20, msec);
