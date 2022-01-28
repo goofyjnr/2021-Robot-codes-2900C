@@ -9,13 +9,15 @@ brain  Brain;
 
 // VEXcode device constructors
 motor leftMotorA = motor(PORT15, ratio18_1, false);
-motor leftMotorB = motor(PORT20, ratio18_1, false);
+motor leftMotorB = motor(PORT14, ratio18_1, true);
 motor_group LeftDriveSmart = motor_group(leftMotorA, leftMotorB);
-motor rightMotorA = motor(PORT11, ratio18_1, true);
-motor rightMotorB = motor(PORT1, ratio18_1, true);
+motor rightMotorA = motor(PORT11, ratio18_1, false);
+motor rightMotorB = motor(PORT12, ratio18_1, true);
 motor_group RightDriveSmart = motor_group(rightMotorA, rightMotorB);
 drivetrain Drivetrain = drivetrain(LeftDriveSmart, RightDriveSmart, 319.19, 295, 40, mm, 1);
-motor goalm = motor(PORT9,ratio36_1,false);
+motor goalm = motor(PORT17,ratio36_1,false);
+motor spinb = motor(PORT10, ratio18_1, true);
+motor spiner = motor(PORT9,ratio18_1,true);
 controller Controller1 = controller(primary);
 
 
@@ -24,6 +26,7 @@ controller Controller1 = controller(primary);
 bool RemoteControlCodeEnabled = true;
 // define variables used for controlling motors based on controller inputs
 bool Controller1RightShoulderControlMotorsStopped = true;
+bool Controller1LeftShoulderControlMotorsStopped = true;
 bool DrivetrainNeedsToBeStopped_Controller1 = true;
 
 // define a task that will handle monitoring inputs from Controller1
@@ -81,6 +84,20 @@ int rc_auto_loop_function_Controller1() {
       }
       else if (Controller1.ButtonB.pressing()) {
         goalm.spinTo(245, degrees);
+      }
+      if (Controller1.ButtonL1.pressing()) {
+        spinb.spin(directionType::fwd,17,velocityUnits::pct);
+        spiner.spin(directionType::fwd,25,velocityUnits::pct);
+        Controller1LeftShoulderControlMotorsStopped = false;
+      } else if (Controller1.ButtonL2.pressing()) {
+        spinb.spin(directionType::rev,40,velocityUnits::pct);
+        spiner.spin(directionType::rev,40,velocityUnits::pct);
+        Controller1LeftShoulderControlMotorsStopped = false;
+      } else if (!Controller1LeftShoulderControlMotorsStopped) {
+        spinb.stop(brakeType::coast);
+        spiner.stop(brakeType::coast);
+        // set the toggle so that we don't constantly tell the motor to stop when the buttons are released
+        Controller1LeftShoulderControlMotorsStopped = true;
       }
       
     }
