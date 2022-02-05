@@ -59,45 +59,45 @@ void autonomous(void) {
   // ..........................................................................
   
     
-    Drivetrain.setDriveVelocity(60,percent);
-    goalm.setVelocity(15, percent);
+    Drivetrain.setDriveVelocity(30,percent);
+    goalm.setVelocity(50, percent);
     
-    
-    //goalm.spin(reverse, 10, percent);
-    //wait(1,sec);
-
-    //goalm.stop();
-    //wait(1, sec);
-
-    //Drivetrain.drive(reverse);
-    //wait(0.2, sec);
-
-    //Drivetrain.stop();
-    //goalm.spin(forward, 10, percent);
-    //wait(2,sec);
-
-    //Drivetrain.turn(left);
-    //wait(2, sec);
+    goalm.spin(forward, 80, percent);
+    wait(1.5, sec);
 
     Drivetrain.drive(forward);
-    goalm.spin(forward, 40, percent);
-    wait(3.7,sec);
-
-    //Drivetrain.turn(right);
-    //wait(0.5, sec);
+    goalm.spin(forward, 60, percent);
+    wait(0.5,sec);
 
     Drivetrain.stop();
-    goalm.spin(reverse, 40, percent);
-    wait(1,sec);
 
-    //goalm.stop();
-    Drivetrain.setDriveVelocity(50,percent);
-    Drivetrain.drive(reverse);
-    wait(4,sec);
+    goalm.spin(reverse, 45, percent);
+    wait(0.45,sec);
 
-    Drivetrain.stop();
+    
+    hook.spin(reverse, 20, percent);
+    wait(0.5, sec);
+    
     goalm.stop();
-    wait(3, sec);
+    hook.spin(reverse, 20, percent);
+    Drivetrain.drive(reverse);
+    wait(0.5,sec);
+
+    hook.spin(forward, 20, percent);
+    wait(0.5,sec);
+
+    spinb.spin(forward,28,percent);
+    spiner.spin(forward,35,percent);
+    goalm.stop();
+    Drivetrain.stop();
+    wait(3,sec);
+
+    /*Drivetrain.turn(left);
+    wait(1, sec); */
+    spinb.stop();
+    spiner.stop();
+    Drivetrain.stop();
+    wait(0.5, sec);
 }
 
 /*---------------------------------------------------------------------------*/

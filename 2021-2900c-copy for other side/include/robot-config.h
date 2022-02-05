@@ -6,6 +6,9 @@ extern brain Brain;
 extern drivetrain Drivetrain;
 extern controller Controller1;
 extern motor goalm;
+extern motor spinb;
+extern motor spiner;
+extern motor hook;
 
 /**
  * Used to initialize code/tasks/devices added using tools in VEXcode Pro.

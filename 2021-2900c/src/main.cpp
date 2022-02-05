@@ -83,7 +83,10 @@ void autonomous(void) {
     Drivetrain.drive(reverse);
     wait(1,sec);
 
-    spinb.spin(forward,28,percent);
+    hook.spin(forward, 20, percent);
+    wait(0.5,sec);
+
+    spinb.spin(forward,35,percent);
     spiner.spin(forward,35,percent);
     goalm.stop();
     Drivetrain.stop();
