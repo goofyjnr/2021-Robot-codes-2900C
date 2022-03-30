@@ -64,16 +64,16 @@ void autonomous(void) {
     goalm.setVelocity(50, percent);
     
     goalm.spin(forward, 80, percent);
-    wait(1.5, sec);
+    wait(1, sec);
 
     Drivetrain.drive(forward);
-    goalm.spin(forward, 60, percent);
+    goalm.spin(forward, 20, percent);
     wait(0.5,sec);
 
     Drivetrain.stop();
 
     goalm.spin(reverse, 45, percent);
-    wait(0.45,sec);
+    wait(1,sec);
 
     
     hook.spin(reverse, 20, percent);

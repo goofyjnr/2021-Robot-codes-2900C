@@ -62,33 +62,26 @@ void autonomous(void) {
     Drivetrain.setDriveVelocity(30,percent);
     goalm.setVelocity(50, percent);
     
-    goalm.spin(forward, 80, percent);
+    goalm.spin(forward, 60, percent);
     wait(1.5, sec);
 
     Drivetrain.drive(forward);
-    goalm.spin(forward, 60, percent);
-    wait(1.5,sec);
-
-    Drivetrain.stop();
-
-    goalm.spin(reverse, 45, percent);
-    wait(0.45,sec);
-
-    
-    hook.spin(reverse, 20, percent);
-    wait(1, sec);
-    
-    goalm.stop();
-    hook.spin(reverse, 20, percent);
-    Drivetrain.drive(reverse);
+    goalm.spin(forward, 20, percent);
     wait(1,sec);
 
-    hook.spin(forward, 20, percent);
-    wait(0.5,sec);
+    Drivetrain.stop();
+    goalm.spin(reverse, 70, percent);
+    wait(1.7,sec);
+
+    
+    
+    Drivetrain.drive(reverse);
+    wait(1.5,sec);
+
 
     spinb.spin(forward,35,percent);
     spiner.spin(forward,35,percent);
-    goalm.stop();
+    goalm.spin(forward, 40, percent);
     Drivetrain.stop();
     wait(3,sec);
 
@@ -97,6 +90,7 @@ void autonomous(void) {
     spinb.stop();
     spiner.stop();
     Drivetrain.stop();
+    goalm.stop();
     wait(0.5, sec);
 }
 

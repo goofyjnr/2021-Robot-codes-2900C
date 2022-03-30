@@ -48,24 +48,24 @@ void pre_auton(void) {
 /*---------------------------------------------------------------------------*/
 
 void autonomous(void) {
-    Drivetrain.setDriveVelocity(70,percent);
-    goalm.setVelocity(50, percent);
+    Drivetrain.setDriveVelocity(85,percent);
+    goalm.setVelocity(80, percent);
     
     goalm.spin(forward, 80, percent);
     wait(1, sec);
 
     Drivetrain.drive(forward);
-    goalm.spin(forward, 60, percent);
-    wait(1,sec);
+    goalm.spin(forward, 20, percent);
+    wait(1.6,sec);
 
     Drivetrain.stop();
 
     goalm.spin(reverse, 45, percent);
-    wait(0.45,sec);
+    wait(1,sec);
 
     goalm.spin(reverse, 45, percent);
     Drivetrain.drive(reverse);
-    wait(1,sec);
+    wait(1.5,sec);
     
 
     Drivetrain.stop();

@@ -70,7 +70,7 @@ int rc_auto_loop_function_Controller1() {
       }
       // check the ButtonR1/ButtonR2 status to control Left_4bar
       if (Controller1.ButtonR1.pressing()) {
-        goalm.spin(directionType::rev,50,velocityUnits::pct);
+        goalm.spin(directionType::rev,60,velocityUnits::pct);
         Controller1RightShoulderControlMotorsStopped = false;
       } else if (Controller1.ButtonR2.pressing()) {
         goalm.spin(directionType::fwd,80,velocityUnits::pct);
